@@ -1,1 +1,52 @@
-<p>product-thumb works!</p>
+<div class="flex gap-4 shadow-sm">
+  <!-- Product Image -->
+  <div class="w-96 max-w-96 h-52 max-h-52 p-3 flex items-center justify-center">
+    <img src="{{product.imageURL}}"/>
+  </div>
+
+  <!-- Product Content -->
+  <div class="flex flex-col gap-2 p-5">
+    <!-- Header -->
+    <header class="flex flex-col">
+      <a class="text-lg font-medium hover:text-yellow-700 hover:cursor-pointer">{{product.name}}</a>
+      <span>{{'⭐'.repeat(product.stars)}}</span>
+      <span class="text-sm font-normal text-gray-500">{{product.sales | parseSales }}+ bought in past month</span>
+    </header>
+
+    <!-- Main -->
+    <div>
+      <!-- Limited time deal with price or price only -->
+      @if (product.limited_time_deal?.active) {
+        <span class="bg-red-900 px-2 py-1 text-white text-sm block w-max mb-1">Limited time deal</span>
+        <div>
+          <strong class="text-4xl font-normal">{{product.price | calculateDiscount:product.limited_time_deal?.discount}}</strong>
+          <span class="text-sm font-normal text-gray-500">Typical: {{product.price.toFixed(2)}}</span>
+        </div>
+      } 
+      @else {
+        <div>
+          <strong class="text-4xl font-normal">{{product.price.toFixed(2)}}</strong>
+        </div>
+      }
+
+      <!-- Coupons -->
+      @if (product.coupons && product.coupons.length) {
+        <div class="flex items-end gap-1">
+          <span class="bg-green-400 p-1 text-sm font-medium block w-max mt-1">Save ${{product.coupons | parseCoupons}}</span>
+          <span class="text-xs font-medium">with coupon</span>
+        </div>
+      }
+    </div>
+
+    <!-- Footer -->
+    <footer class="flex flex-col">
+      <span class="text-sm">Delivery <strong>Tue, Apr 9</strong></span>
+      <span class="text-xs">Chips to Ecuador</span>
+
+      <!-- Stock minimun -->
+      @if (product.stock < 10) {
+        <span class="text-red-800 text-base font-normal">Only {{product.stock}} left in stock - order soon.</span>
+      }
+    </footer>
+  </div>
+</div>

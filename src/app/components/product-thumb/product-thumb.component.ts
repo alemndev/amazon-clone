@@ -1,10 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { IProduct } from '../../interfaces/Product.interface';
+import { ParseSalesPipe } from '../../pipes/parse-sales.pipe';
+import { CalculateDiscountPipe } from '../../pipes/calculate-discount.pipe';
+import { ParseCouponsPipe } from '../../pipes/parse-coupons.pipe';
 
 @Component({
   selector: 'product-thumb',
   standalone: true,
-  imports: [],
+  imports: [
+    ParseSalesPipe, 
+    CalculateDiscountPipe,
+    ParseCouponsPipe
+  ],
   templateUrl: './product-thumb.component.html',
   styleUrl: './product-thumb.component.css'
 })

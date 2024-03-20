@@ -1,3 +1,5 @@
-@for (product of products; track $index) {
-  <product-thumb [product]="product"/>
-}
+<div class="flex flex-col gap-6">
+  @for (product of products; track $index) {
+    <product-thumb [product]="product"/>
+  }
+</div>
