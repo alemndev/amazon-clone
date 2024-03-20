@@ -1,0 +1,13 @@
+<div class="flex h-10 max-h-10 w-[100%]">
+  <select class="bg-[#E6E6E6] w-16 text-black text-xs rounded-tl-md rounded-bl-md">
+    @for (item of searchIn; track $index) {
+      <option>{{item}}</option>
+    }
+  </select>
+
+  <input (input)="updateSearchValue($event)" type="text" class="w-full outline-none text-black font-medium text-sm px-2">
+
+  <button class="bg-[#FEBD69] w-24 flex justify-center items-center rounded-tr-md rounded-br-md">
+    <ng-icon name="matSearch" class="text-3xl text-[#333333]"></ng-icon>
+  </button>
+</div>

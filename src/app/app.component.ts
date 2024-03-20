@@ -6,9 +6,13 @@ import { HeaderComponent } from './components/header/header.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ProductListComponent, HeaderComponent],
+  imports: [
+    RouterOutlet, 
+    ProductListComponent, 
+    HeaderComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'amazon-clone';
